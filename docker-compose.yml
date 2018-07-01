@@ -2,7 +2,25 @@ version: '3.4'
 
 services:
   modix:
-    image: modix
-    build:
-      context: ./Modix
-      dockerfile: Dockerfile
+    env_file:
+      - modix.env
+    image: xeronik/modix:latest
+    environment:
+      MODIX_DISCORD_TOKEN: ${MODIX_DISCORD_TOKEN}
+      MODIX_REPL_URL: http://repl
+      MODIX_REPL_TOKEN: ${MODIX_REPL_TOKEN}
+      MODIX_STACKOVERFLOW_TOKEN: ${MODIX_STACKOVERFLOW_TOKEN}
+      MODIX_DB_CONNECTION: postgres://db:5432
+      MODIX_DISCORD_CLIENTID: ${MODIX_DISCORD_CLIENTID}
+      MODIX_DISCORD_CLIENTSECRET: ${MODIX_DISCORD_CLIENTSECRET}
+      MODIX_WEBHOOK_TOKEN: ${MODIX_WEBHOOK_TOKEN}
+      MODIX_SENTRY_DSN: ${MODIX_SENTRY_DSN}
+  database:
+    env_file:
+      - pgsql.env
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: ${postgres_password}
+  repl:
+
+
