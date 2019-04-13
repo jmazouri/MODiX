@@ -29,6 +29,7 @@ namespace Modix.Services.Core
                 .AddSingleton<IReadySynchronizationProvider>(x => x.GetService<ReadySynchronizationProvider>())
                 .AddSingleton<INotificationHandler<ReadyNotification>>(x => x.GetService<ReadySynchronizationProvider>())
                 .AddSingleton<ISelfUserProvider, SelfUserProvider>()
+                .AddSingleton<IBehavior, GuildEventBehavior>()
                 .AddScoped<IAuthorizationService, AuthorizationService>()
                 .AddScoped<IChannelService, ChannelService>()
                 .AddScoped<IRoleService, RoleService>()
