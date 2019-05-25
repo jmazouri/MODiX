@@ -27,6 +27,7 @@ namespace Modix.Modules
         public PromotionsModule(IPromotionsService promotionsService, IOptions<ModixConfig> config)
         {
             PromotionsService = promotionsService;
+            Config = config.Value;
         }
 
         [Command("campaigns")]
@@ -163,7 +164,6 @@ namespace Modix.Modules
         }
 
         internal protected IPromotionsService PromotionsService { get; }
-
         internal protected ModixConfig Config { get; }
     }
 }
